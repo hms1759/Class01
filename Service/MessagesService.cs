@@ -67,7 +67,8 @@ namespace Class01.Service
 
         public List<Messages> GetAll()
         {
-            throw new NotImplementedException();
+            var hermsg = _dbContext.DbMessages.ToList();
+            return hermsg;
         }
 
        
