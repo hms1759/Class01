@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MyApplication.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,18 +34,34 @@ namespace Class01
 
             services.AddControllers();
            
-            services.AddDbContextPool<EmployeeDbContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-            services.AddScoped<IEmployee, EmployeeService>(); 
+            services.AddDbContextPool<HotelMSDBContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            services.AddScoped<IVisitor, VisitorService>(); 
             
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Class01", Version = "v1" });
             });
+
+            var config = new AutoMapper.MapperConfiguration(c =>
+            {
+                c.AddProfile(new AppProfile());
+            });
+
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseCors(options => options.AllowAnyOrigin()
+                                          ///  .WithOrigins("http://localhost:3001")
+                                        .AllowAnyMethod()
+                                        .AllowAnyHeader());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

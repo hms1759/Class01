@@ -1,0 +1,23 @@
+﻿using Microsoft.EntityFrameworkCore;
+using MyApplication.Models.ModelDbContext;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Class01.Model
+{
+    public class HotelMSDBContext :DbContext
+    {
+        public HotelMSDBContext(DbContextOptions<HotelMSDBContext>options) : base(options)
+        {
+
+        }
+      //  public DbSet<CashAdvance> DbCashAdvance { get; set; }
+       // public DbSet<staffs> DbDepartment { get; set; }
+        public DbSet<Staffs> DbStaff { get; set; }
+        public DbSet<Visitor> DbVisitor { get; set; }
+        public DbSet<Order> DbOrder { get; set; }
+        public DbSet<Messages> DbMessages { get; set; }
+    }
+}
