@@ -35,8 +35,9 @@ namespace Class01
             services.AddControllers();
            
             services.AddDbContextPool<HotelMSDBContext>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-            services.AddScoped<IVisitor, VisitorService>(); 
-            
+            services.AddScoped<IVisitor, VisitorService>();
+            services.AddScoped<IMessagesService, MessagesService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Class01", Version = "v1" });
