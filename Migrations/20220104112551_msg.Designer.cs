@@ -3,14 +3,16 @@ using Class01.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MyApplication.Migrations
 {
     [DbContext(typeof(HotelMSDBContext))]
-    partial class HotelMSDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220104112551_msg")]
+    partial class msg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
