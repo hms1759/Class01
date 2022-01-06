@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace MyApplication.Migrations
+namespace Class01.Migrations
 {
     [DbContext(typeof(HotelMSDBContext))]
-    [Migration("20220104112551_msg")]
-    partial class msg
+    [Migration("20220106003529_mgs")]
+    partial class mgs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

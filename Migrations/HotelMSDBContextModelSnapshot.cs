@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace MyApplication.Migrations
+namespace Class01.Migrations
 {
     [DbContext(typeof(HotelMSDBContext))]
     partial class HotelMSDBContextModelSnapshot : ModelSnapshot

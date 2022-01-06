@@ -1,29 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyApplication.Migrations
+namespace Class01.Migrations
 {
-    public partial class mcapi : Migration
+    public partial class mgs : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DbCashAdvance",
+                name: "DbMessages",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    requestBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    requestDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    approvedDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    approvedBY = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    requestStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Employee_Id = table.Column<int>(type: "int", nullable: false),
-                    amount = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    department = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    reference = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    feature = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DbCashAdvance", x => x.Id);
+                    table.PrimaryKey("PK_DbMessages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,7 +82,7 @@ namespace MyApplication.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DbCashAdvance");
+                name: "DbMessages");
 
             migrationBuilder.DropTable(
                 name: "DbOrder");

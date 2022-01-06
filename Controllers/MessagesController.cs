@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Class01.Controllers
 {
-    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class MessagesController : ControllerBase

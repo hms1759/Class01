@@ -61,6 +61,10 @@ namespace Class01.Service
             var random = new Random();
             var featuredmsg = _dbContext.DbMessages.Where(x => x.feature == Enum.Featured.True).ToList();
             int i = random.Next(featuredmsg.Count);
+            if(i < 0)
+            {
+                return null;
+            }
             var msg = featuredmsg[i];
             return msg;
         }
