@@ -9,6 +9,7 @@ namespace Class01.IService
    public interface IMessagesService
     {
         Task<Messages> addMessage(Messages msg);
+        List<Messages> Addmany(Messages msg);
         List<Messages> getMessageForHer();
         List<Messages> getMessageForWife();
         List<Messages> getMessageForHusband();

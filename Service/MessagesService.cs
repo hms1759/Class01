@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Class01.IService;
 using Class01.Model;
+using EFCore.BulkExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,7 @@ namespace Class01.Service
             _mapper = mapper;
         }
 
-       public async Task<Messages> addMessage(Messages msg)
-        {
-            var Message = _mapper.Map<Messages>(msg);
-
-            _dbContext.DbMessages.Add(Message);
-            int count = _dbContext.SaveChanges();
-            if (count < 1)
-            {
-                return null;
-
-            }
-
-            return (Message);
-        }
+    
 
         public List<Messages> getMessageForHer()
         {
@@ -75,6 +63,44 @@ namespace Class01.Service
             return hermsg;
         }
 
-       
+        public async Task<Messages> addMessage(Messages msg)
+        {
+            var Message = _mapper.Map<Messages>(msg);
+
+            _dbContext.DbMessages.Add(Message);
+            int count = _dbContext.SaveChanges();
+            if (count < 1)
+            {
+                return null;
+
+            }
+
+            return (Message);
+        }
+        public List<Messages> Addmany(Messages msg)
+        {
+            List<Messages> messages = new List<Messages>();
+            messages = GetDataForInsert();
+            _dbContext.BulkInsert(messages);
+            return messages;
+
+        }
+
+        public static List<Messages> GetDataForInsert()
+        {
+            List<Messages> messages = new List<Messages>();
+            for (int i = 0; i < 100000; i++)
+            {
+                messages.Add(new Messages()
+                {
+                    Message = "Message_ " + i,
+                    reference = "reference_ " + i,
+                    title = "title_ " + i,
+                });
+
+
+            }
+            return messages;
+        }
     }
 }

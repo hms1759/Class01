@@ -76,6 +76,18 @@ namespace Class01.Controllers
             return Ok(visit);
         }
 
+
+
+        [HttpPost]
+        [Route("AddMany")]
+        public  ActionResult AddMessages(Messages msg)
+        {
+            var manyitems = _imsg.Addmany(msg);
+           
+            return Ok(manyitems);
+
+        }
+
     }
 
 }
